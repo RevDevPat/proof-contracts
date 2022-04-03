@@ -112,18 +112,12 @@ contract TokenCutter is Context, IERC20, IERC20Metadata  {
     address payable public devWallet;
 
     bool inSwapAndLiquify;
-    bool public swapAndLiquifyEnabled = true;
     bool public tradingStatus = true;
     bool private _noTaxMode = false;
 
     mapping (address => bool) private bots;    
 
     uint256 public _maxTxAmount;
-
-    struct User {
-        uint256 buyCD;
-        bool exists;
-    }
     
     constructor(string memory tokenName, string memory tokenSymbol, uint256 initialSupply, address owner
                 ,address routerAddress, address initialHldAdmin, address initialHldBurner, Fees.allFees memory fees) {
